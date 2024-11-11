@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,130 @@
   }
     
     </script>
-</html>
+</html> -->
 
- 
- 
+
+
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Age Calculator</title>
+      <link rel="stylesheet" href="styles.css">
+  </head>
+  <style>
+    /* styles.css */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #4c8eaf;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+input, button {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #689bd8;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #408196;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    input, button {
+        width: 100%;
+    }
+}
+
+
+  </style>
+  <body>
+      <div class="container">
+          <header>
+              <h1>Age Calculator</h1>
+          </header>
+          <main>
+              <p>Enter your date of birth to calculate your age</p>
+              <label for="dob">Enter your Date of Birth:</label>
+              <input type="date" id="dob">
+              <button onclick="calculateAge()">Calculate Age</button>
+              <p id="age"></p>
+          </main>
+         
+      </div>
+  
+      <script>
+        // script.js
+
+function calculateAge() {
+    const dob = document.getElementById("dob").value; // Get the input date of birth
+    if (!dob) {
+        alert("Please enter a valid date of birth.");
+        return;
+    }
+    
+    const birthDate = new Date(dob); // Convert the input value to a Date object
+    const currentDate = new Date(); // Get the current date
+
+    let age = currentDate.getFullYear() - birthDate.getFullYear(); // Calculate the initial age
+    const monthDiff = currentDate.getMonth() - birthDate.getMonth(); // Calculate the difference in months
+    const dayDiff = currentDate.getDate() - birthDate.getDate(); // Calculate the difference in days
+
+    // Adjust age if the birthday hasn't occurred yet this year
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+    }
+
+    // Display the result
+    const ageDisplay = document.getElementById("age");
+    ageDisplay.textContent = `You are ${age} years old.`;
+}
+
+      </script>
+  </body>
+  </html>
+  
